@@ -1,0 +1,20 @@
+[project]
+name = "aerohawkspython"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Nikita Nasiedkin",email = "nkitanas@proton.me"}
+]
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "gpiod (>=2.4.0,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "aerohawkspython", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
