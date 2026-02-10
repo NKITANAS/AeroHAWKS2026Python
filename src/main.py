@@ -1,8 +1,10 @@
 import gpiod
+from time import sleep
 
 import Constants
 import IMU
 import LinearActuators
+import LORA
 import StepperMotor
 
 def main():
@@ -15,3 +17,5 @@ def main():
 
     # Set the line value to 1 (high)
     line.set_value(1)
+
+main()

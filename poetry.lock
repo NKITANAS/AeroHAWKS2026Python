@@ -35,7 +35,19 @@ files = [
     {file = "gpiod-2.4.0.tar.gz", hash = "sha256:9243a1a59d084ec749d1df4a1e2f238ffb9d94515b0d9f5335460175143c3aa1"},
 ]
 
+[[package]]
+name = "mpu6050-raspberrypi"
+version = "1.2"
+description = "A Python module for accessing the MPU-6050 digital accelerometer and gyroscope on a Raspberry Pi."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "mpu6050-raspberrypi-1.2.tar.gz", hash = "sha256:10801a5fde8af5132ccd77d0c819b7e25b9dc82bde7405aab7f132c6c08a4c4b"},
+    {file = "mpu6050_raspberrypi-1.2-py3-none-any.whl", hash = "sha256:89c7dc3e16904ffe9eb2d6b64d464477cbcc00f4640cd563519eefb1d16cf1ba"},
+]
+
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.14"
-content-hash = "079075262c7637785df3ae613a62b19593cfd5773a1a88159f749b51720d523d"
+content-hash = "a3006c4651db9711b89c556dc7b383792924a1d3835828896541f4b2877a5f5c"
