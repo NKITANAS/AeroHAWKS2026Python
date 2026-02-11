@@ -15,25 +15,22 @@ class StepperMotor:
         self.dir_pin  = Constants.STEPPER_MOTOR_DIR_PIN
         self.step_pin = Constants.STEPPER_MOTOR_STEP_PIN
 
-        self.dir_pin.request(consumer='stepper-motor', type=gpiod.LINE_REQ_DIR_OUT, default_vals=[0])
-        self.step_pin.request(consumer='stepper-motor', type=gpiod.LINE_REQ_DIR_OUT, default_vals=[0])
-
     # One Step Forward
     def step_forward(self):
-        self.dir_pin.set_value(1)   # Set direction to forward
-        sleep(0.01)                 # Delay for direction change
-        self.step_pin.set_value(1)  # Step
-        sleep(0.01)                 # Delay for step timing
-        self.step_pin.set_value(0)  # Reset step pin
-        sleep(0.01)                 # Delay for step timing
+        Constants.request.set_value(self.dir_pin,  gpiod.line.Value.ACTIVE)   # Set direction to forward
+        sleep(0.01)                                                           # Delay for direction change
+        Constants.request.set_value(self.step_pin, gpiod.line.Value.ACTIVE)   # Step
+        sleep(0.01)                                                           # Delay for step timing
+        Constants.request.set_value(self.step_pin, gpiod.line.Value.INACTIVE) # Reset step pin
+        sleep(0.01)                                                           # Delay for step timing
 
     # One Step Backward
     def step_backward(self):
-        self.dir_pin.set_value(0)   # Set direction to backward
-        sleep(0.01)                 # Delay for direction change
-        self.step_pin.set_value(1)  # Step
-        sleep(0.01)                 # Delay for step timing
-        self.step_pin.set_value(0)  # Reset step pin
+        Constants.request.set_value(self.dir_pin,  gpiod.line.Value.ACTIVE)   # Set direction to backward
+        sleep(0.01)                                                           # Delay for direction change
+        Constants.request.set_value(self.step_pin, gpiod.line.Value.ACTIVE)   # Step
+        sleep(0.01)                                                           # Delay for step timing
+        Constants.request.set_value(self.step_pin, gpiod.line.Value.INACTIVE) # Reset step pin
         sleep(0.01)                 # Delay for step timing
 
     def step_to_windows(self, window):
