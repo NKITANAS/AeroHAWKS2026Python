@@ -6,6 +6,11 @@ TEST_MODE: bool = True
 
 gpiochip: gpiod.Chip = gpiod.Chip('/dev/gpiochip0')
 
+# Math Constants #
+
+GRAVITY: float = 9.80665          # m/s^2
+GAS_CONSTANT: float = 8.314462618 # J/(mol*K)
+
 # Pin/Line definitions #
 
 # Linear Actuators - numbers are subject to change
@@ -23,8 +28,8 @@ MOISTURE_SENSOR_1_PIN: int = 7
 MOISTURE_SENSOR_2_PIN: int = 8
 
 # Altimiter(Barometer) - numbers are subject to change
-ALTIMITER_SDA_PIN: int = 9
-ALTIMITER_SCL_PIN: int = 10
+BAROMETER_I2C_ADDRESS:          int = 0x76
+BAROMETER_i2C_OUTPUT_DATA_RATE: int = 0xF4
 
 # IMU - numbers are subject to change
 IMU: mpu6050 = mpu6050(0x68)

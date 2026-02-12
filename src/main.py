@@ -19,6 +19,7 @@ imu             = IMU.IMU()
 linearactuators = LinearActuators.LinearActuators()
 lora            = LORA.LORA()
 steppermotor    = StepperMotor.StepperMotor()
+moisturesensor  = MoistureSensors.MoistureSensors()
 
 class Status(Enum):
     IDLE = 1
@@ -94,13 +95,12 @@ def main():
             # Begin data collection sequence
             steppermotor.step_to_windows(optimal_window)
 
-        
+            # Read Linear Actuators and read soil moisture data(Finally!)
+            if optimal_window == StepperMotor.Windows.WINDOW1 or optimal_window == StepperMotor.Windows.WINDOW3:
+                reading = moisturesensor.read_moisture()["1"]
+            else:
+                reading = moisturesensor.read_moisture()["2"]
 
-
-
-
-
-            
 
 if not Constants.TEST_MODE:
     main()

@@ -17,9 +17,9 @@ class LORA:
         # Set frequency to 915 Mhz
         self.Lora.setFrequency(915000000)
         # set spreading factor 8, bandwidth 125 kHz, coding rate 4/5, and low data rate optimization off
-        self.Lora.setself.LoraModulation(8, 125000, 5, False)
+        self.Lora.setLoRaModulation(8, 125000, 5, False)
         # set explicit header mode, preamble length 12, payload length 15, CRC on and no invert IQ operation
-        self.Lora.setself.LoraPacket(self.Lora.HEADER_EXPLICIT, 12, 15, True, False)
+        self.Lora.setLoRaPacket(self.Lora.HEADER_EXPLICIT, 12, 15, True, False)
         # Set syncronize word for public network (0x3444)
         self.Lora.setSyncWord(0x3444)
     

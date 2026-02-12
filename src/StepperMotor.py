@@ -10,6 +10,9 @@ class Windows(Enum):
     WINDOW4 = 4
 
 class StepperMotor:
+    # Count of steps taken
+    step_count: int = 0
+
     # Initialize the stepper motor control pins
     def __init__(self):
         self.dir_pin  = Constants.STEPPER_MOTOR_DIR_PIN
@@ -22,6 +25,7 @@ class StepperMotor:
         Constants.request.set_value(self.step_pin, gpiod.line.Value.ACTIVE)   # Step
         sleep(0.01)                                                           # Delay for step timing
         Constants.request.set_value(self.step_pin, gpiod.line.Value.INACTIVE) # Reset step pin
+        step_count += 1                                                       # Increment step count
         sleep(0.01)                                                           # Delay for step timing
 
     # One Step Backward
@@ -31,7 +35,8 @@ class StepperMotor:
         Constants.request.set_value(self.step_pin, gpiod.line.Value.ACTIVE)   # Step
         sleep(0.01)                                                           # Delay for step timing
         Constants.request.set_value(self.step_pin, gpiod.line.Value.INACTIVE) # Reset step pin
-        sleep(0.01)                 # Delay for step timing
+        step_count -= 1                                                       # Decrement step count
+        sleep(0.01)                                                           # Delay for step timing
 
     def step_to_windows(self, window):
         if window == Windows.WINDOW1:
