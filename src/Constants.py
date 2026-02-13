@@ -12,6 +12,7 @@ GRAVITY: float = 9.80665          # m/s^2
 GAS_CONSTANT: float = 8.314462618 # J/(mol*K)
 
 # Pin/Line definitions #
+### NOTE: DONT USE 8 AND 9
 
 # Linear Actuators - numbers are subject to change
 LINEAR_ACTUATOR_L_PIN_1: int = 1
@@ -25,7 +26,7 @@ STEPPER_MOTOR_STEP_PIN:  int = 6
 
 # Moisture Sensors - numbers are subject to change
 MOISTURE_SENSOR_1_PIN: int = 7
-MOISTURE_SENSOR_2_PIN: int = 8
+MOISTURE_SENSOR_2_PIN: int = 10
 
 # Altimiter(Barometer) - numbers are subject to change
 BAROMETER_I2C_ADDRESS:          int = 0x76
