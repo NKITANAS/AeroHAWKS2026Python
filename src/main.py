@@ -31,11 +31,13 @@ class Status(Enum):
 def main():
     turn_on_signal_received: bool = False
     # Wait for the "Turn On" signal from the ground station before starting the main loop
+    """
     while not turn_on_signal_received:
         message = lora.recieve()
         if message == "100:1":
             turn_on_signal_received = True
             print("STATUS: Turn On Recieved")
+    """
     # Init
     start_time          = datetime.datetime.now()
     start_height: float = 0.00 # MAJOR TODO: Altimiter
@@ -107,6 +109,6 @@ if not Constants.TEST_MODE:
 else:
     tests.test_stepper_motor()
     tests.test_linear_actuators()
-    tests.test_imu()
+    tests.test_imu()               # ERROR HERE - MPU6050 not found, make sure it is properly connected and the address is correct
     tests.test_lora_transmission()
     #tests.test_lora_reception()

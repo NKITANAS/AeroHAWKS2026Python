@@ -6,6 +6,7 @@ This Payload can:
 * Transmit Data to a ground station via LoRa
 * Extend it's soil probes and measure ground moisture data upon landing
 * Detect different stages of flight with an accelerometer
+In addition to this code, a Raspberry Pi pico is also used to interpret analog data and route sensor data to the Pi via I2C.
 ## How to run
 On a Raspberry Pi:
 1. If python cannot be updated to a version higher than 3.14 via apt, build it from source.

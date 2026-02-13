@@ -15,18 +15,14 @@ GAS_CONSTANT: float = 8.314462618 # J/(mol*K)
 ### NOTE: DONT USE 8 AND 9
 
 # Linear Actuators - numbers are subject to change
-LINEAR_ACTUATOR_L_PIN_1: int = 1
-LINEAR_ACTUATOR_L_PIN_2: int = 2
-LINEAR_ACTUATOR_R_PIN_1: int = 3
-LINEAR_ACTUATOR_R_PIN_2: int = 4
+LINEAR_ACTUATOR_L_PIN_1: int = 6
+LINEAR_ACTUATOR_L_PIN_2: int = 13
+LINEAR_ACTUATOR_R_PIN_1: int = 19
+LINEAR_ACTUATOR_R_PIN_2: int = 26
 
 # Stepper Motor - numbers are subject to change
-STEPPER_MOTOR_DIR_PIN:   int = 5
-STEPPER_MOTOR_STEP_PIN:  int = 6
-
-# Moisture Sensors - numbers are subject to change
-MOISTURE_SENSOR_1_PIN: int = 7
-MOISTURE_SENSOR_2_PIN: int = 10
+STEPPER_MOTOR_DIR_PIN:   int = 23
+STEPPER_MOTOR_STEP_PIN:  int = 24
 
 # Altimiter(Barometer) - numbers are subject to change
 BAROMETER_I2C_ADDRESS:          int = 0x76
@@ -59,7 +55,5 @@ request: gpiod.LineRequest = gpiochip.request_lines(
         LINEAR_ACTUATOR_R_PIN_2: default_settings,
         STEPPER_MOTOR_DIR_PIN:   default_settings,
         STEPPER_MOTOR_STEP_PIN:  default_settings,
-        MOISTURE_SENSOR_1_PIN:   input_settings,
-        MOISTURE_SENSOR_2_PIN:   input_settings
     },
 )

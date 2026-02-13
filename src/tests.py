@@ -40,7 +40,7 @@ def test_imu():
 
     print(f"Temperature: {temperature} C")
     print(f"Gyroscope: {gyroscope} degrees/s")
-    print(f"Accelerometer: {accelerometer} g")
+    print(f"Accelerometer: {accelerometer} m/s^2")
 
 def test_lora_transmission():
     lora.transmit("Hello, World!")

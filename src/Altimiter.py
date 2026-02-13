@@ -5,10 +5,7 @@ import math
 import Constants
 
 class Altimiter:
-    # MAJOR TODO:
-    # Research on altimiter sensor via barometric pressure, and implement the code to read data from it.
-    # The initial height will be set in here, in __init__
-    # WRITE INITIAL PRESSURE READING TO CONSTANTS!!!
+    # MAJOR TODO: This will take the data from the pico via I2C
 
     def __init__(self):
         self.bus = smbus.SMBus(4)  # Use I2C bus 4
