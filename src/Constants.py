@@ -42,10 +42,10 @@ WINDOW2_STEPS: float  = 90  * DEGREE_TO_STEP
 WINDOW3_STEPS: float  = 0   * DEGREE_TO_STEP  
 WINDOW4_STEPS: float  = 90  * DEGREE_TO_STEP  
 
-default_settings: gpiod.LineSettings = gpiod.line_settings(
+default_settings: gpiod.LineSettings = gpiod.line_settings.LineSettings(
     direction=gpiod.line.Direction.OUTPUT
     )
-input_settings: gpiod.LineSettings = gpiod.line_settings(
+input_settings: gpiod.LineSettings = gpiod.line_settings.LineSettings(
     direction=gpiod.line.Direction.INPUT
     )
 
