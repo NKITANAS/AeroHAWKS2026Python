@@ -4,22 +4,19 @@ from time import sleep
 import datetime
 
 import Constants
-import IMU
 import LinearActuators
 import LORA
 import StepperMotor
-import MoistureSensors
-
+import Pico
 import tests
 
 from enum import Enum
 
 # Instantiate the classes
-imu             = IMU.IMU()
+pico            = Pico.Pico()
 linearactuators = LinearActuators.LinearActuators()
 lora            = LORA.LORA()
 steppermotor    = StepperMotor.StepperMotor()
-moisturesensor  = MoistureSensors.MoistureSensors()
 
 class Status(Enum):
     IDLE = 1
@@ -47,7 +44,7 @@ def main():
 
     old_time                 = datetime.datetime.now()
 
-    orientation: dict = imu.get_gyroscope_data()['x'] # For deciding optimal window, might have to use y instead depending on sensor orient
+    orientation: dict = pico.read_gyroscope() # For deciding optimal window, might have to use y instead depending on sensor orient
 
     optimal_window: StepperMotor.Windows = StepperMotor.Windows.WINDOW1 # Default to WINDOW1, will be updated in main loop based on orientation data
 
@@ -60,8 +57,8 @@ def main():
         height: float = 0.00   # MAJOR TODO: Altimiter
 
         # IMU data
-        accelerometer_data: dict = imu.get_accelerometer_data()
-        gyroscope_data:     dict = imu.get_gyroscope_data()
+        accelerometer_data: dict = pico.read_accelerometer()
+        gyroscope_data:     dict = pico.read_gyroscope
 
         orientation += (gyroscope_data['x']) * (time - old_time) # For deciding optimal window, might have to use y instead depending on sensor orient
 
@@ -87,21 +84,16 @@ def main():
         if status == Status.LANDED:
             if orientation < 90.00:
                 optimal_window = StepperMotor.Windows.WINDOW1
-            elif orientation < 180.00:
-                optimal_window = StepperMotor.Windows.WINDOW2
-            elif orientation < 270.00:
-                optimal_window = StepperMotor.Windows.WINDOW3
-            else:
-                optimal_window = StepperMotor.Windows.WINDOW4
 
             # Begin data collection sequence
             steppermotor.step_to_windows(optimal_window)
 
             # Read Linear Actuators and read soil moisture data(Finally!)
             if optimal_window == StepperMotor.Windows.WINDOW1 or optimal_window == StepperMotor.Windows.WINDOW3:
-                reading = moisturesensor.read_moisture()["1"]
+                reading = pico.read_moisture(1)
             else:
-                reading = moisturesensor.read_moisture()["2"]
+                reading = pico.read_moisture(2)
+            lora.transmit(f"MOISTURE_READING:{reading}")
 
 
 if not Constants.TEST_MODE:
@@ -109,6 +101,6 @@ if not Constants.TEST_MODE:
 else:
     tests.test_stepper_motor()
     tests.test_linear_actuators()
-    tests.test_imu()               # ERROR HERE - MPU6050 not found, make sure it is properly connected and the address is correct
+    tests.test_imu()               
     tests.test_lora_transmission()
     #tests.test_lora_reception()

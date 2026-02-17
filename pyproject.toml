@@ -12,7 +12,8 @@ dependencies = [
     "mpu6050-raspberrypi (>=1.2,<2.0)",
     "lorarf (>=1.4.0,<2.0.0)",
     "smbus (>=1.1.post2,<2.0)",
-    "spidev (>=3.8,<4.0)"
+    "spidev (>=3.8,<4.0)",
+    "serial (>=0.0.97,<0.0.98)"
 ]
 
 [tool.poetry]

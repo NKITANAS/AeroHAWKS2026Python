@@ -6,6 +6,10 @@ TEST_MODE: bool = True
 
 gpiochip: gpiod.Chip = gpiod.Chip('/dev/gpiochip0')
 
+# Pico
+PICO_SERIAL_PORT: str = '/dev/ttyACM0'
+PICO_BAUD_RATE: int = 115200
+
 # Math Constants #
 
 GRAVITY: float = 9.80665          # m/s^2

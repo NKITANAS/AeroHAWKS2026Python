@@ -1,6 +1,5 @@
 import StepperMotor
 import LinearActuators
-import IMU
 import LORA
 import Constants
 
@@ -8,7 +7,6 @@ from time import sleep
 
 stepper_motor: StepperMotor.StepperMotor = StepperMotor.StepperMotor()
 linear_actuators: LinearActuators.LinearActuators = LinearActuators.LinearActuators()
-imu: IMU.IMU = IMU.IMU()
 lora: LORA.LORA = LORA.LORA()
 
 def test_stepper_motor():
@@ -34,13 +32,7 @@ def test_linear_actuators():
     linear_actuators.reset_actuators()
 
 def test_imu():
-    temperature   = imu.get_temperature_data()
-    gyroscope     = imu.get_gyroscope_data()
-    accelerometer = imu.get_accelerometer_data()
-
-    print(f"Temperature: {temperature} C")
-    print(f"Gyroscope: {gyroscope} degrees/s")
-    print(f"Accelerometer: {accelerometer} m/s^2")
+    pass
 
 def test_lora_transmission():
     lora.transmit("Hello, World!")
