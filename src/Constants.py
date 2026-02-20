@@ -28,13 +28,6 @@ LINEAR_ACTUATOR_R_PIN_2: int = 26
 STEPPER_MOTOR_DIR_PIN:   int = 23
 STEPPER_MOTOR_STEP_PIN:  int = 24
 
-# Altimiter(Barometer) - numbers are subject to change
-BAROMETER_I2C_ADDRESS:          int = 0x76
-BAROMETER_i2C_OUTPUT_DATA_RATE: int = 0xF4
-
-# IMU - numbers are subject to change
-IMU: mpu6050 = mpu6050(0x68)
-
 # Stepper Motor Windows positions #
 DEGREE_TO_STEP: float = 200 / 360 # 200 steps per revolution, 360 degrees per revolution
 
