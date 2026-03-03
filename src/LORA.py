@@ -39,7 +39,8 @@ class LORA:
     def transmit(self, message) -> None:
         # message and counter to transmit
         messageList = list(message)
-        for i in range(len(messageList)) : messageList[i] = ord(messageList[i])
+        for i in range(len(messageList)): 
+            messageList[i] = ord(messageList[i])
         counter = 0
 
         self.Lora.beginPacket()
