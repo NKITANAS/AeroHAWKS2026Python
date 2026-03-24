@@ -7,7 +7,7 @@ TEST_MODE: bool = True
 gpiochip: gpiod.Chip = gpiod.Chip('/dev/gpiochip0')
 
 # Pico
-PICO_SERIAL_PORT: str = '/dev/ttyACM0'
+PICO_SERIAL_PORT: str = '/dev/serial0'
 PICO_BAUD_RATE: int = 115200
 
 # Math Constants #
