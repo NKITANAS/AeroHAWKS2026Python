@@ -13,6 +13,17 @@ class Pico:
             self.connected = False 
         
     def read_data(self):
-        if self.connected and self.ser.in_waiting > 0:
-            line = self.ser.readline().decode('utf-8').rstrip()
-            return line
+        if self.connected and self.ser and self.ser.in_waiting > 0:
+            try:
+                line = self.ser.readline().decode('utf-8').rstrip()
+                return line
+            except (serial.SerialException, UnicodeDecodeError) as e:
+                print(f"Error reading from serial port: {e}")
+                return None
+        return None
+    
+    def close(self):
+        """Close the serial connection"""
+        if self.ser and self.ser.is_open:
+            self.ser.close()
+            print("Pico serial connection closed")
