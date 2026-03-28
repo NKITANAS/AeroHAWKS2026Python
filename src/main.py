@@ -1,10 +1,13 @@
-from time import sleep
+from time import sleep, monotonic
 import LORA
 
 lora = LORA.LORA()
 
+PING_INTERVAL = 5  # seconds
+
 def main():
-    print("--- LoRa RX Only (Press Ctrl+C to stop) ---")
+    print("--- LoRa RX + PING every 5s (Press Ctrl+C to stop) ---")
+    last_ping = monotonic()
 
     while True:
         try:
@@ -12,6 +15,11 @@ def main():
 
             if incoming:
                 print(f"RX: {incoming}")
+
+            if monotonic() - last_ping >= PING_INTERVAL:
+                print("TX: PING")
+                lora.transmit("PING")
+                last_ping = monotonic()
 
             sleep(0.01)
 
